@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/homeFragment"
+        android:title="Home"
+        android:icon="@drawable/baseline_home_24"/>
+    <item
+        android:id="@+id/expFragment"
+        android:title="Stories"
+        android:icon="@drawable/useraddstory"/>
+    <item
+        android:id="@+id/favFragment"
+        android:title="Add Stories"
+        android:icon="@drawable/add"/>
+    <item
+        android:id="@+id/musicFragment"
+        android:title="Trend"
+        android:icon="@drawable/electric"/>
+    <item
+        android:id="@+id/userFragment"
+        android:title="User"
+        android:icon="@drawable/contact"/>
+</menu>

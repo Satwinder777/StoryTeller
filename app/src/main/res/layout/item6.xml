@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_margin="3dp"
+    android:layout_height="wrap_content">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="130dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="MissingConstraints">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginHorizontal="10dp"
+          android:layout_marginVertical="10dp"
+            android:orientation="vertical">
+
+                    <TextView
+
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textSize="8sp"
+                        android:layout_marginVertical="10dp"
+                        android:fontFamily="@font/pt_serif_regular"
+                        android:text="Mrs.Richard"
+                        android:textColor="@color/black"
+                        android:textAlignment="center" />
+
+            <TextView
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/pt_serif_regular"
+                android:text="@string/lorum_ipsum"
+                android:lines="1"
+                android:textAlignment="textStart"
+                android:textSize="8sp" />
+
+            <TextView
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="8sp"
+                android:lines="1"
+
+                android:fontFamily="@font/pt_serif_regular"
+            android:text="@string/l2"
+                android:layout_marginVertical="5dp"
+                android:textAlignment="textStart" />
+
+            <TextView
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="8sp"
+                android:lines="1"
+                android:fontFamily="@font/pt_serif_regular"
+            android:text="#Foodies"
+                android:textAlignment="textStart" />
+
+
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="end"
+                        android:text="More +"
+                        android:textSize="7sp"
+                        android:layout_marginTop="6dp"
+                        android:layout_marginEnd="10dp"
+                        android:textColor="@color/blue" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+
+                        android:layout_height="1dp"
+                        android:layout_gravity="end"
+                        android:textSize="7sp"
+
+                        android:layout_marginEnd="10dp"
+                        android:background="@color/blue"
+                        android:text="More +" />
+
+            </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
