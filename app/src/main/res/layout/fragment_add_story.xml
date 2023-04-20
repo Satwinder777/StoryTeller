@@ -3,7 +3,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-
     tools:context="com.example.fragments.AddStoryFragment">
 <LinearLayout
     android:layout_width="match_parent"
@@ -16,18 +15,10 @@
 
         android:orientation="horizontal">
 
-        <ImageView
-            android:id="@+id/backbtn1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:layout_gravity="center"
-            android:layout_marginStart="-20dp"
-            android:src="@drawable/baseline_arrow_back_24" />
 
         <TextView
             android:id="@+id/textView"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:layout_gravity="center"
@@ -38,15 +29,6 @@
             android:textColor="@color/white"
             android:text="Lorum Ipsum" />
 
-        <ImageView
-            android:id="@+id/imageView2"
-            android:layout_width="wrap_content"
-            android:layout_gravity="center"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:visibility="invisible"
-            android:layout_marginEnd="-30dp"
-            app:srcCompat="@drawable/baseline_more_vert_24" />
     </LinearLayout>
 
     <LinearLayout
@@ -63,6 +45,7 @@
 
             <com.google.android.material.card.MaterialCardView
                 android:layout_width="100dp"
+                android:id="@+id/addStoryCard1"
                 android:layout_height="120dp"
                 android:layout_margin="18dp"
                 android:layout_weight="1"
@@ -92,6 +75,7 @@
             </com.google.android.material.card.MaterialCardView>
 
             <androidx.cardview.widget.CardView
+                android:id="@+id/addStoryCard2"
                 android:layout_width="100dp"
                 android:layout_height="120dp"
                 android:layout_margin="18dp"
@@ -129,6 +113,7 @@
             android:orientation="horizontal">
 
             <com.google.android.material.card.MaterialCardView
+                android:id="@+id/addStoryCard3"
                 android:layout_width="100dp"
                 android:layout_height="120dp"
                 android:layout_margin="18dp"
@@ -159,6 +144,7 @@
             </com.google.android.material.card.MaterialCardView>
 
             <androidx.cardview.widget.CardView
+                android:id="@+id/addStoryCard4"
                 android:layout_width="100dp"
                 android:layout_height="120dp"
                 android:layout_margin="18dp"
@@ -196,6 +182,7 @@
             android:orientation="horizontal">
 
             <com.google.android.material.card.MaterialCardView
+                android:id="@+id/addStoryCard5"
                 android:layout_width="100dp"
                 android:layout_height="120dp"
                 android:layout_margin="18dp"
@@ -226,6 +213,8 @@
             </com.google.android.material.card.MaterialCardView>
 
             <androidx.cardview.widget.CardView
+                android:id="@+id/addStoryCard6"
+
                 android:layout_width="100dp"
                 android:layout_height="120dp"
                 android:layout_margin="18dp"
@@ -263,6 +252,8 @@
             android:orientation="horizontal">
 
             <com.google.android.material.card.MaterialCardView
+                android:id="@+id/addStoryCard7"
+
                 android:layout_width="100dp"
                 android:layout_height="120dp"
                 android:layout_margin="18dp"
@@ -293,6 +284,8 @@
             </com.google.android.material.card.MaterialCardView>
 
             <androidx.cardview.widget.CardView
+                android:id="@+id/addStoryCard8"
+
                 android:layout_width="100dp"
                 android:layout_height="120dp"
                 android:layout_margin="18dp"

@@ -2,24 +2,20 @@ package com.example.fragments
 
 
 
-import android.content.Context
-import android.net.Uri
-import android.provider.ContactsContract.CommonDataKinds.Website.URL
+import android.content.ClipData.Item
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
-import android.widget.TextView
-import androidx.cardview.widget.CardView
-import androidx.recyclerview.widget.GridLayoutManager
+import android.widget.LinearLayout
+import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import androidx.recyclerview.widget.RecyclerView.HORIZONTAL
-import androidx.recyclerview.widget.RecyclerView.Recycler
-import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.example.dataClass.ParentItem
-
 import com.example.task_by_sir.R
+import com.google.android.flexbox.FlexDirection
+import com.google.android.flexbox.FlexboxLayoutManager
+import com.google.android.flexbox.JustifyContent
 import com.google.android.material.card.MaterialCardView
 
 
@@ -27,7 +23,7 @@ class AdapterData(var list: MutableList<ParentItem>,var OncardClick:AdapterData.
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): InerClass {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.item,parent,false)
+        val view = LayoutInflater.from(parent.context).inflate(R.layout.story_item,parent,false)
         return  InerClass(view )
     }
 
@@ -53,7 +49,12 @@ class AdapterData(var list: MutableList<ParentItem>,var OncardClick:AdapterData.
 
             //
 
-            childrc2.layoutManager = StaggeredGridLayoutManager(3, StaggeredGridLayoutManager.HORIZONTAL)
+//            childrc2.layoutManager = StaggeredGridLayoutManager(3, StaggeredGridLayoutManager.HORIZONTAL)
+            val layoutManager = FlexboxLayoutManager(itemView.context)
+            layoutManager.setFlexDirection(FlexDirection.ROW)
+            layoutManager.setJustifyContent(JustifyContent.FLEX_START)
+//            context.findViewById(R.id.recyclerview).layoutManager = layoutManager
+            childrc2.layoutManager = layoutManager
             var adapter1 =ChildAdapter2(parentItem.list)
             childrc2.adapter =adapter1
             card.setOnClickListener {
@@ -71,6 +72,14 @@ class AdapterData(var list: MutableList<ParentItem>,var OncardClick:AdapterData.
                 onSharebtnClick.shareClick(position,it)
 
             }
+
+            moreImg.visibility = View.GONE
+            cardApproved.visibility = View.GONE
+            checkImgItem.visibility= View.GONE
+            inspiredcard.visibility = View.VISIBLE
+            constraint1.visibility = View.VISIBLE
+            commentSection.visibility = View.GONE
+            commentRecyclerView.visibility = View.GONE
         }
     }
     class InerClass(ItemView: View):RecyclerView.ViewHolder(ItemView) {
@@ -80,6 +89,15 @@ class AdapterData(var list: MutableList<ParentItem>,var OncardClick:AdapterData.
             var sharebtn = ItemView.findViewById<ImageView>(R.id.sharebtn)
             var commentbtn = ItemView.findViewById<ImageView>(R.id.commentbtn)
             var aboutbtn = ItemView.findViewById<ImageView>(R.id.aboutbtn)
+
+        //
+        val checkImgItem = ItemView.findViewById<ImageView>(R.id.checkImgItem)
+        val moreImg = ItemView.findViewById<ImageView>(R.id.moreImg)
+        val cardApproved = ItemView.findViewById<MaterialCardView>(R.id.cardApproved)
+        val inspiredcard = ItemView.findViewById<MaterialCardView>(R.id.inspiredcard)
+        val constraint1 = ItemView.findViewById<ConstraintLayout>(R.id.constraint0)
+        val commentSection = ItemView.findViewById<ConstraintLayout>(R.id.commentSection)
+        val commentRecyclerView = ItemView.findViewById<RecyclerView>(R.id.commentRecyclerView)
 
 
 

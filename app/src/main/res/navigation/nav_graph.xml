@@ -19,7 +19,14 @@
         android:id="@+id/favFragment"
         android:name="com.example.fragments.AddStoryFragment"
         android:label="fragment_fav"
-        tools:layout="@layout/fragment_add_story" />
+        tools:layout="@layout/fragment_add_story" >
+        <action
+            android:id="@+id/action_favFragment_to_expFragment"
+            app:destination="@id/expFragment"
+            >
+
+        </action>
+    </fragment>
     <fragment
         android:id="@+id/musicFragment"
         android:name="com.example.fragments.trendFragment"

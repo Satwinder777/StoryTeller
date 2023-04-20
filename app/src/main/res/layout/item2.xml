@@ -18,21 +18,25 @@
             android:layout_width="4dp"
             android:layout_height="match_parent"
             android:background="@color/blue"
-            android:text="TextView" />
+              />
 
-        <androidx.cardview.widget.CardView
+        <com.google.android.material.card.MaterialCardView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             app:cardCornerRadius="20dp"
+             
+
             android:layout_marginHorizontal="13dp"
             >
 
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_margin="2dp"
+
                 app:srcCompat="@drawable/girl12" />
-        </androidx.cardview.widget.CardView>
+        </com.google.android.material.card.MaterialCardView>
 
         <LinearLayout
             android:layout_width="wrap_content"

@@ -14,7 +14,7 @@ import com.example.fragments.AdapterData4
 
 class NotificationActivity : AppCompatActivity(),AdapterData4.cardClick {
 
-    @SuppressLint("MissingInflatedId")
+    @SuppressLint("MissingInflatedId", "NotifyDataSetChanged")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_notification)

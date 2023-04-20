@@ -72,26 +72,6 @@ class trendFragment : Fragment() {
         }
     }
 
-
-//        inscard.setCardBackgroundColor(ContextCompat.getColor(this, R.color.blue))
-//        inspiredcard.setCardBackgroundColor(ContextCompat.getColor(this, R.color.brown))
-//        line.visibility = View.VISIBLE
-//        line2.visibility = View.INVISIBLE
-//        inspiredtext.setTextColor(ContextCompat.getColor(this, R.color.white))
-//        inspirationtext.setTextColor(ContextCompat.getColor(this, R.color.white))
-//            var list = mutableListOf<String>("satta","gatta","patta","gdjhsg","ghds",)
-
-
-
-
-
-
-
-
-//fun addlist():MutableList<String>{
-//    var newList = mutableListOf<String>("bds","bds","bds","bds","bds","bds","bds","bds","bds","bds",)
-//    return newList
-//}
     private fun addDAta(){
     mlist.add(trendzChild("Most Inspired"))
     mlist.add(trendzChild("Most Discussed"))

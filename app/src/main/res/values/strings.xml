@@ -12,6 +12,10 @@
     <string name="hello_first_fragment">Hello first fragment</string>
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
     <string name="l1"> <b>"Lorem" </b>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less".</string>
+    <string name="l4"> <b>"Lorem" </b>It is a long established fact that a reader will be distracted by the readable content of a page when at its layout."</string>
+    <string name="l3"> <b>"Lorem" </b>It is a long established fact that a".</string>
     <string name="lorum_ipsum">"Lorum Ipsum."</string>
     <string name="l2">"I got it out the Lorum</string>
+    <string name="lin1"><b>"Lorem" </b>All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet. It uses a dictionary of over 200 Latin words, combined with a handful of model sentence structures, to generate Lorem Ipsum which looks reasonable. The generated Lorem Ipsum is therefore always free from repetition, injected humour, or non-characteristic words etc. 5 paragraphs words bytes lists Start with \'Lorem ipsum dolor sit amet...\'</string>
+    <string name="lorum_l">gajgadghjahkadfhdaifhlddfhdla</string>
 </resources>
