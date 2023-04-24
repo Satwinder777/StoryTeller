@@ -30,6 +30,7 @@ class ViewPagerAdapter(private val myContext: Context, fm: FragmentManager,var l
     override fun getCount(): Int {
         return 3
     }
+   
     override fun getPageTitle(position: Int): CharSequence? {
 //        return super.getPageTitle(position)
         when(position){

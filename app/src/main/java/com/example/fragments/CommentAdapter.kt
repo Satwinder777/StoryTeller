@@ -8,29 +8,20 @@ package com.example.fragments
 import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
-import android.net.Uri
-import android.provider.ContactsContract.CommonDataKinds.Website.URL
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.EditText
 import android.widget.ImageView
 import android.widget.LinearLayout
-import android.widget.TextView
-import androidx.cardview.widget.CardView
 import androidx.constraintlayout.widget.ConstraintLayout
-import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import androidx.recyclerview.widget.RecyclerView.HORIZONTAL
-import androidx.recyclerview.widget.RecyclerView.LayoutParams
-import androidx.recyclerview.widget.RecyclerView.Recycler
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.example.dataClass.CommentItem
 import com.example.dataClass.ParentItem
 
 import com.example.task_by_sir.R
-import com.google.android.material.card.MaterialCardView
 
 
 class CommentAdapter(var context: Context,var list: MutableList<ParentItem>, var list2: MutableList<CommentItem>,var updateData: updateData1):RecyclerView.Adapter<CommentAdapter.InerClass>(),storychild21Adapter.onClickImgVid {
@@ -39,7 +30,7 @@ class CommentAdapter(var context: Context,var list: MutableList<ParentItem>, var
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): InerClass {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.story_item,parent,false)
-        return  InerClass(view )
+        return  InerClass(view ,context)
     }
 
     override fun getItemCount(): Int {
@@ -94,7 +85,7 @@ class CommentAdapter(var context: Context,var list: MutableList<ParentItem>, var
             lineHorizontal.visibility = View.GONE
         }
     }
-    class InerClass(ItemView: View):RecyclerView.ViewHolder(ItemView) {
+    class InerClass(ItemView: View,var context: Context):RecyclerView.ViewHolder(ItemView) {
         var storyDataRecyclerView = ItemView.findViewById<RecyclerView>(R.id.childrc)
         var chipItemRecyclerView = ItemView.findViewById<RecyclerView>(R.id.parentrc1)
         var commentRecyclerView = ItemView.findViewById<RecyclerView>(R.id.commentRecyclerView)
@@ -119,9 +110,9 @@ class CommentAdapter(var context: Context,var list: MutableList<ParentItem>, var
         fun updateAdapter(position: Int,item: CommentItem)
     }
 
-    override fun openVide(view: View) {
-        val intent = Intent(context,PreviewFragment::class.java)
-        context.startActivity(intent)
+    override fun openVide(view: View, position: Int) {
+        val intent = Intent(this.context,PreviewFragment::class.java)
+        this.context.startActivity(intent)
     }
 
 

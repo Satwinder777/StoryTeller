@@ -2,16 +2,18 @@ package com.example.fragments
 
 
 
-import android.content.ClipData.Item
+import android.annotation.SuppressLint
+import android.net.Uri
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
-import android.widget.LinearLayout
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.dataClass.ChildData
 import com.example.dataClass.ParentItem
+import com.example.dataClass.VideoDataCls
 import com.example.task_by_sir.R
 import com.google.android.flexbox.FlexDirection
 import com.google.android.flexbox.FlexboxLayoutManager
@@ -19,7 +21,10 @@ import com.google.android.flexbox.JustifyContent
 import com.google.android.material.card.MaterialCardView
 
 
-class AdapterData(var list: MutableList<ParentItem>,var OncardClick:AdapterData.cardClick,var onSharebtnClick:AdapterData.onshareClick):RecyclerView.Adapter<AdapterData.InerClass>() {
+class AdapterData(var list: MutableList<ParentItem>, var list2: MutableList<VideoDataCls>, var OncardClick:AdapterData.cardClick, var onSharebtnClick:AdapterData.onshareClick):
+    RecyclerView.Adapter<AdapterData.InerClass>(){
+    lateinit var storyDAta:MutableList<Any>
+
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): InerClass {
@@ -32,20 +37,34 @@ class AdapterData(var list: MutableList<ParentItem>,var OncardClick:AdapterData.
         return size
     }
 
+    @SuppressLint("NotifyDataSetChanged")
     override fun onBindViewHolder(holder: InerClass, position: Int) {
+        var packageName = this
+        var vidDAta = mutableListOf<String>("android.resource://" + packageName + "/" + R.raw.video0,"android.resource://" + packageName + "/" + R.raw.video1,"android.resource://" + packageName + "/" + R.raw.video0)
+        var uri2 = Uri.parse(vidDAta[2])
+        var uri1 = Uri.parse(vidDAta[1])
+        var uri0 = Uri.parse(vidDAta[0])
+        storyDAta = mutableListOf(ChildData(R.drawable.girl2),VideoDataCls(uri1),ChildData(R.drawable.girl2),VideoDataCls(uri1),)
+
+
 //        val layoutParams = holder.itemView.layoutParams as StaggeredGridLayoutManager.LayoutParams
 //        layoutParams.isFullSpan = childrc2.isFullWidth // Set isFullSpan to true if the item should span the entire width
 //        layoutParams.spanIndex = position % spanCount // Set the span index based on the item position
 //        layoutParams.spanSize = item.spanSize // Set the span size of the item
+
 //        holder.bind(item)
         holder.apply {
 
             val parentItem = list[position]
 
+//            var list2 = mutableListOf<VideoDataCls>(VideoDataCls(uri0))
+
 
             childrc.layoutManager = LinearLayoutManager(holder.itemView.context,LinearLayoutManager.HORIZONTAL,false)
-            var adapter = ChildAdapter(parentItem.mList)
+            var adapter = ChildAdapter(storyDAta,null)
+
             childrc.adapter = adapter
+            adapter?.notifyDataSetChanged()
 
             //
 
@@ -109,6 +128,7 @@ class AdapterData(var list: MutableList<ParentItem>,var OncardClick:AdapterData.
     interface onshareClick{
         fun shareClick(position:Int,view:View)
     }
+
 
 }
 

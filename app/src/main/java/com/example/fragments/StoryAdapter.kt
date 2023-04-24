@@ -7,25 +7,19 @@ package com.example.fragments
 
 import android.content.Context
 import android.content.Intent
-import android.net.Uri
-import android.provider.ContactsContract.CommonDataKinds.Website.URL
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
-import android.widget.TextView
-import androidx.cardview.widget.CardView
 import androidx.constraintlayout.widget.ConstraintLayout
-import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import androidx.recyclerview.widget.RecyclerView.HORIZONTAL
-import androidx.recyclerview.widget.RecyclerView.Recycler
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.example.dataClass.ParentItem
+import com.example.task_by_sir.PreviewActivity
+import com.example.task_by_sir.PreviewStory
 
 import com.example.task_by_sir.R
-import com.google.android.material.card.MaterialCardView
 
 
 class StoryAdapter(var context: Context,var list: MutableList<ParentItem>,var OncardClick:StoryAdapter.cardClick,var onSharebtnClick:StoryAdapter.onshareClick,var comentClicks:onCommentClick ):RecyclerView.Adapter<StoryAdapter.InerClass>(),storychild21Adapter.onClickImgVid {
@@ -33,7 +27,7 @@ class StoryAdapter(var context: Context,var list: MutableList<ParentItem>,var On
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): InerClass {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.story_item,parent,false)
-        return  InerClass(view )
+        return  InerClass(context,view )
     }
 
     override fun getItemCount(): Int {
@@ -83,7 +77,7 @@ class StoryAdapter(var context: Context,var list: MutableList<ParentItem>,var On
 
         }
     }
-    class InerClass(ItemView: View):RecyclerView.ViewHolder(ItemView) {
+    class InerClass(var context: Context,ItemView: View):RecyclerView.ViewHolder(ItemView) {
         var childrc = ItemView.findViewById<RecyclerView>(R.id.childrc)
         var childrc2 = ItemView.findViewById<RecyclerView>(R.id.parentrc1)
         var sharebtn = ItemView.findViewById<ImageView>(R.id.sharebtn)
@@ -108,11 +102,17 @@ class StoryAdapter(var context: Context,var list: MutableList<ParentItem>,var On
         fun ccommentClick(position:Int,view:View)
     }
 
-    override fun openVide(view: View) {
-        var intent = Intent(context,PreviewFragment::class.java)
-        context.startActivity(intent)
+    override fun openVide(view: View, position: Int) {
+        var intent = Intent(this.context,PreviewStory::class.java)
+        this.context.startActivity(intent)
 
     }
+//    override fun openVide(view: View, position: Int) {
+//        var intent = Intent(this.context,PreviewFragment::class.java)
+//        this.context.startActivity(intent)
+//
+//    }
+
 
 
 }

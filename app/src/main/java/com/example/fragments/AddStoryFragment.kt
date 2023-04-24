@@ -14,6 +14,8 @@ import android.widget.Button
 import android.widget.ImageView
 import android.widget.PopupWindow
 import androidx.cardview.widget.CardView
+import androidx.lifecycle.lifecycleScope
+import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import androidx.navigation.Navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
@@ -29,7 +31,7 @@ class AddStoryFragment : Fragment(){
 //class AddStoryFragment : Fragment() ,AddStory.onPopupOkCkick{
 
 
-
+var navController = NavController
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -101,7 +103,12 @@ class AddStoryFragment : Fragment(){
 //                .commit()
 
 
+            val fragment = AddStoryFragment()
 
+//            supportFragmentManager.beginTransaction()
+//                .replace(R.id.fragment_container, fragment)
+//                .addToBackStack(null)
+//                .commit()
             Log.e("abc", "onClick1: nothing", )
 
         }
@@ -115,7 +122,10 @@ class AddStoryFragment : Fragment(){
 //    }
 
     fun greatTask(){
-        findNavController().navigate(R.id.action_favFragment_to_expFragment)
+//        findNavController().navigate(R.id.action_favFragment_to_expFragment)
+
+//            findNavController().navigate(R.id.action_favFragment_to_expFragment)
+
     }
       fun nav() {
 //          NavHostFragment.findNavController(this).navigate(R.id.action_favFragment_to_expFragment)   //due to fragment manager

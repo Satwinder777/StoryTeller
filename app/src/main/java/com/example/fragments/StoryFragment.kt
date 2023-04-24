@@ -1,17 +1,18 @@
 package com.example.fragments
 
 import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.dataClass.ChildData
 import com.example.dataClass.ChildData2
 import com.example.dataClass.ParentItem
+import com.example.dataClass.VideoDataCls
 import com.example.task_by_sir.CommentActivity
 import com.example.task_by_sir.R
 
@@ -72,11 +73,11 @@ class StoryFragment : Fragment(),StoryAdapter.onshareClick,StoryAdapter.cardClic
             )
 
 
-        ParentList.add(ParentItem(childList,childList2))
-        ParentList.add(ParentItem(childList,childList2))
-        ParentList.add(ParentItem(childList,childList2))
-        ParentList.add(ParentItem(childList,childList2))
-        ParentList.add(ParentItem(childList,childList2))
+        ParentList.add(ParentItem(childList,childList2,null))
+        ParentList.add(ParentItem(childList,childList2,null))
+        ParentList.add(ParentItem(childList,childList2,null))
+        ParentList.add(ParentItem(childList,childList2,null))
+        ParentList.add(ParentItem(childList,childList2,null))
     }
 
     override fun shareClick(position: Int, view: View) {

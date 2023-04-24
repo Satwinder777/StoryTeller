@@ -3,7 +3,6 @@ package com.example.task_by_sir
 import android.annotation.SuppressLint
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.View
 import android.widget.EditText
 import android.widget.ImageView
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -12,9 +11,7 @@ import com.example.dataClass.ChildData
 import com.example.dataClass.ChildData2
 import com.example.dataClass.CommentItem
 import com.example.dataClass.ParentItem
-import com.example.fragments.AdapterData
 import com.example.fragments.CommentAdapter
-import com.example.fragments.StoryCommentAdapter
 
 class CommentActivity : AppCompatActivity(),CommentAdapter.updateData1 {
     private val ParentList = mutableListOf<ParentItem>( )
@@ -75,11 +72,11 @@ var defaultUser = "satwinder_8182"
             )
 
 
-        ParentList.add(ParentItem(childList,childList2))
-        ParentList.add(ParentItem(childList,childList2))
-        ParentList.add(ParentItem(childList,childList2))
-        ParentList.add(ParentItem(childList,childList2))
-        ParentList.add(ParentItem(childList,childList2))
+        ParentList.add(ParentItem(childList,childList2,null))
+        ParentList.add(ParentItem(childList,childList2,null))
+        ParentList.add(ParentItem(childList,childList2,null))
+        ParentList.add(ParentItem(childList,childList2,null))
+        ParentList.add(ParentItem(childList,childList2,null))
     }
 
     @SuppressLint("NotifyDataSetChanged")

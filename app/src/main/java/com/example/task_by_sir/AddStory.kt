@@ -17,9 +17,11 @@ import androidx.activity.result.ActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.annotation.RequiresApi
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.ReportFragment.Companion.reportFragment
 import androidx.navigation.*
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.ui.NavigationUI
 
 import androidx.recyclerview.widget.RecyclerView
 import com.example.dataClass.addStoryItem
@@ -99,7 +101,11 @@ class AddStory : AppCompatActivity() {
 //                 startActivity(intent)
 
 //                 supportFragmentManager.findFragmentById(R.id.expFragment)?.findNavController()?.navigate(R.id.action_favFragment_to_expFragment)
-                 AddStoryFragment().greatTask()
+//                 AddStoryFragment().greatTask()
+//                 var fragment = AddStoryFragment().navController
+//                 NavHostFragment.findNavController(fragment).navigate(R.id.action_favFragment_to_expFragment)
+
+
 
 
              }

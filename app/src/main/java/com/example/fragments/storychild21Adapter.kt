@@ -34,9 +34,10 @@ class storychild21Adapter(var list: MutableList<ChildData>,var onClickImgVid1:on
 //            var like:Boolean = false
 //            card.setOnClickListener { OncardClick.oncardclick(position) }
 //            sharebtn.setOnClickListener { onSharebtnClick.shareClick(position, sharebtn) }
-            childImage.setImageResource(list[position].img)
+            list[position].image?.let { childImage.setImageResource(it) }
+
             childImage.setOnClickListener {
-                onClickImgVid1.openVide(it)
+                onClickImgVid1.openVide(it,position)
             }
 
         }
@@ -56,7 +57,7 @@ class storychild21Adapter(var list: MutableList<ChildData>,var onClickImgVid1:on
         fun shareClick(position:Int,view:View)
     }
     interface onClickImgVid{
-        fun openVide(view: View)
+        fun openVide(view: View, position: Int)
     }
 
 }
