@@ -3,23 +3,15 @@ package com.example.fragments
 
 
 import android.annotation.SuppressLint
-import android.content.Context
-import android.net.Uri
-import android.provider.ContactsContract.CommonDataKinds.Website.URL
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
 import android.widget.TextView
 import androidx.cardview.widget.CardView
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
-import androidx.recyclerview.widget.RecyclerView.Recycler
-import com.example.dataClass.ChildData
 import com.example.dataClass.ChildData2
-
 import com.example.task_by_sir.R
-import com.google.android.material.card.MaterialCardView
 
 
 class ChildAdapter2(var list: MutableList<ChildData2>):RecyclerView.Adapter<ChildAdapter2.InerClass>() {
@@ -39,22 +31,13 @@ class ChildAdapter2(var list: MutableList<ChildData2>):RecyclerView.Adapter<Chil
     override fun onBindViewHolder(holder: InerClass, position: Int) {
         var cp =list[position]
         holder.apply {
-
-//            var like:Boolean = false
-//            card.setOnClickListener { OncardClick.oncardclick(position) }
-//            sharebtn.setOnClickListener { onSharebtnClick.shareClick(position, sharebtn) }
         textView.text = cp.text
             card.setCardBackgroundColor(ContextCompat.getColor(itemView.context, cp.clr))
         }
     }
     class InerClass(ItemView: View):RecyclerView.ViewHolder(ItemView) {
-//        var UserImg = ItemView.findViewById<ImageView>(R.id.bNView)
-//        var card = ItemView.findViewById<MaterialCardView>(R.id.inspiredcard)
         var card = ItemView.findViewById<CardView>(R.id.cardimp)
         var textView = ItemView.findViewById<TextView>(R.id.textimp)
-
-
-
 
     }
     interface cardClick{

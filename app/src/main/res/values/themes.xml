@@ -11,6 +11,7 @@
         <item name="colorOnSecondary">@color/black</item>
         <!-- Status bar color. -->
         <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
+        <item name="bottomSheetDialogTheme">@style/AppBottomSheetDialogTheme</item>
         <!-- Customize your theme here. -->
     </style>
     <style name="Theme.Task_by_Sir.NoActionBar">
@@ -19,4 +20,30 @@
     </style>
     <style name="Theme.Task_by_Sir.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
     <style name="Theme.Task_by_Sir.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+    /////
+    <style
+        name="AppBottomSheetDialogTheme"
+        parent="Theme.Design.Light.BottomSheetDialog">
+        <item name="bottomSheetStyle">@style/AppModelStyle</item>
+    </style>
+
+    <style
+        name="AppModelStyle"
+        parent="Widget.Design.BottomSheet.Modal">
+        <item name="android:background">@drawable/dialog_shape</item>
+    </style>
+
+    ////////
+    <style
+        name="AppPopUpWindowTheme"
+        parent="">
+        <item name="bottomSheetStyle">@style/AppModelStyle</item>
+    </style>
+    <style
+        name="popUpwindow"
+        parent="Widget.AppCompat.PopupWindow">
+        <item name="android:background">@drawable/dialog_shape</item>
+    </style>
+////////
+
 </resources>

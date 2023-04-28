@@ -79,9 +79,14 @@ class CommentAdapter(var context: Context,var list: MutableList<ParentItem>, var
                 commentAdapter.notifyDataSetChanged()
 
                 editComment.text.clear()
+                updateData.activeEdit(it)
+
 
 
             }
+             moreImg.setOnClickListener {
+                 updateData.openDialog(it)
+             }
             lineHorizontal.visibility = View.GONE
         }
     }
@@ -92,6 +97,7 @@ class CommentAdapter(var context: Context,var list: MutableList<ParentItem>, var
         var sharebtn = ItemView.findViewById<ImageView>(R.id.sharebtn)
         var commentbtn = ItemView.findViewById<ImageView>(R.id.commentbtn)
         var aboutbtn = ItemView.findViewById<ImageView>(R.id.aboutbtn)
+        var moreImg = ItemView.findViewById<ImageView>(R.id.moreImg)
 
         var constraint1 = ItemView.findViewById<ConstraintLayout>(R.id.constraint0)
         var iconLinearL = ItemView.findViewById<LinearLayout>(R.id.linearLayoutIconCSA)
@@ -108,6 +114,8 @@ class CommentAdapter(var context: Context,var list: MutableList<ParentItem>, var
 
     interface updateData1{
         fun updateAdapter(position: Int,item: CommentItem)
+        fun openDialog(view: View)
+        fun activeEdit(view: View)
     }
 
     override fun openVide(view: View, position: Int) {

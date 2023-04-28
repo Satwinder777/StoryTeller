@@ -12,19 +12,24 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.PopupMenu
 import android.widget.PopupWindow
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.dataClass.ChildData
 import com.example.dataClass.ChildData2
 import com.example.dataClass.ParentItem
 import com.example.dataClass.VideoDataCls
+import com.example.fragments.StoryFragment.Companion.textList
 import com.example.task_by_sir.InspirationActivity
 import com.example.task_by_sir.NotificationActivity
 import com.example.task_by_sir.R
+import com.example.task_by_sir.databinding.FragmentHome4Binding
 import com.google.android.material.bottomsheet.BottomSheetDialog
 
 
 class HomeFragment : Fragment(),AdapterData.cardClick,AdapterData.onshareClick{
+
+    private lateinit var binding:FragmentHome4Binding
     val ParentList = mutableListOf<ParentItem>( )
     val newLIst = mutableListOf<VideoDataCls>( )
 
@@ -34,7 +39,8 @@ class HomeFragment : Fragment(),AdapterData.cardClick,AdapterData.onshareClick{
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_home4, container, false)
+        binding = FragmentHome4Binding.inflate(layoutInflater)
+        return binding.root
     }
 
     @SuppressLint("MissingInflatedId")
@@ -52,6 +58,8 @@ class HomeFragment : Fragment(),AdapterData.cardClick,AdapterData.onshareClick{
             popimg.setOnClickListener {
                 window.dismiss()
 
+
+
             }
 
 //            window.showAsDropDown(pop)
@@ -59,7 +67,7 @@ class HomeFragment : Fragment(),AdapterData.cardClick,AdapterData.onshareClick{
 
         }
 
-        val recycler = view.findViewById<RecyclerView>(R.id.recycler)
+        val recycler = binding.recycler
         addDataToList()
         val adapter = AdapterData(ParentList,newLIst,this,this)
         recycler.layoutManager = LinearLayoutManager(requireContext())
@@ -67,7 +75,7 @@ class HomeFragment : Fragment(),AdapterData.cardClick,AdapterData.onshareClick{
 
 
 
-        var bell = view.findViewById<ImageView>(R.id.bell)
+        var bell = binding.bell
 
         bell.setOnClickListener {
 
@@ -75,7 +83,7 @@ class HomeFragment : Fragment(),AdapterData.cardClick,AdapterData.onshareClick{
 
             startActivity(intent)
         }
-val updown:ImageView = view.findViewById(R.id.upDown)
+val updown:ImageView = binding.upDown
         updown.setOnClickListener {
             val popupMenu: PopupMenu = PopupMenu(requireContext(),updown)
             popupMenu.menuInflater.inflate(R.menu.menu1, popupMenu.menu)
@@ -105,15 +113,7 @@ val updown:ImageView = view.findViewById(R.id.upDown)
             ChildData(R.drawable.img3),
 
         )
-        var packageName  = this
-        var vidDAta = mutableListOf<String>("android.resource://" + packageName + "/" + R.raw.video0,"android.resource://" + packageName + "/" + R.raw.video1,"android.resource://" + packageName + "/" + R.raw.video0)
-        var uri2 = Uri.parse(vidDAta[2])
-        var uri1 = Uri.parse(vidDAta[1])
-        var uri0 = Uri.parse(vidDAta[0])
-        var list2 = mutableListOf<VideoDataCls>(VideoDataCls(uri0),VideoDataCls(uri1 ),VideoDataCls(uri2))
-        newLIst.add(VideoDataCls(uri0))
-        newLIst.add(VideoDataCls(uri1))
-        newLIst.add(VideoDataCls(uri2))
+
         var childList2 = mutableListOf<ChildData2>(
             ChildData2("Appealing",R.color.blue ),
             ChildData2( "Boring",R.color.red),
@@ -133,11 +133,11 @@ val updown:ImageView = view.findViewById(R.id.upDown)
         )
 
 
-        ParentList.add(ParentItem(childList,childList2,newLIst))
-        ParentList.add(ParentItem(childList,childList2,newLIst))
-        ParentList.add(ParentItem(childList,childList2,newLIst))
-        ParentList.add(ParentItem(childList,childList2,newLIst))
-        ParentList.add(ParentItem(childList,childList2,newLIst))
+        ParentList.add(ParentItem(childList,childList2,newLIst, textList))
+        ParentList.add(ParentItem(childList,childList2,newLIst, textList))
+        ParentList.add(ParentItem(childList,childList2,newLIst, textList))
+        ParentList.add(ParentItem(childList,childList2,newLIst, textList))
+        ParentList.add(ParentItem(childList,childList2,newLIst, textList))
     }
 //    var comboList = mutableListOf<Any>(newLIst,childList2)
 

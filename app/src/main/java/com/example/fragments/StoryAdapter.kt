@@ -11,6 +11,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -22,7 +23,7 @@ import com.example.task_by_sir.PreviewStory
 import com.example.task_by_sir.R
 
 
-class StoryAdapter(var context: Context,var list: MutableList<ParentItem>,var OncardClick:StoryAdapter.cardClick,var onSharebtnClick:StoryAdapter.onshareClick,var comentClicks:onCommentClick ):RecyclerView.Adapter<StoryAdapter.InerClass>(),storychild21Adapter.onClickImgVid {
+class StoryAdapter(var context: Context,var list: MutableList<ParentItem>,var OncardClick:StoryAdapter.cardClick,var onSharebtnClick:StoryAdapter.onshareClick,var comentClicks:onCommentClick  ):RecyclerView.Adapter<StoryAdapter.InerClass>(),storychild21Adapter.onClickImgVid {
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): InerClass {
@@ -74,6 +75,11 @@ class StoryAdapter(var context: Context,var list: MutableList<ParentItem>,var On
             parentCommentSection.visibility = View.GONE
             commentRecyclerView.visibility = View.GONE
 
+            //textView set text
+            title.text = parentItem.textList?.get(0)
+            desc.text = parentItem.textList?.get(1)
+            keyword.text = parentItem.textList?.get(2)
+
 
         }
     }
@@ -87,6 +93,15 @@ class StoryAdapter(var context: Context,var list: MutableList<ParentItem>,var On
         var constraint1 = ItemView.findViewById<ConstraintLayout>(R.id.constraint0)
         val parentCommentSection = ItemView.findViewById<ConstraintLayout>(R.id.commentSection)
         val commentRecyclerView = ItemView.findViewById<RecyclerView>(R.id.commentRecyclerView)
+
+        //textViews
+        val title = itemView.findViewById<TextView>(R.id.storyTitle)
+        val desc = itemView.findViewById<TextView>(R.id.descTitle)
+        val keyword = itemView.findViewById<TextView>(R.id.keywordTitle)
+
+
+
+
 
 
 

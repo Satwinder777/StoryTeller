@@ -18,6 +18,8 @@ import androidx.lifecycle.lifecycleScope
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import androidx.navigation.Navigation.findNavController
+
+import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.fragment.findNavController
 import com.example.task_by_sir.AddStory
@@ -27,7 +29,7 @@ import com.google.android.material.button.MaterialButton
 import com.google.android.material.card.MaterialCardView
 
 //class AddStoryFragment : Fragment(){
-class AddStoryFragment : Fragment(){
+class AddStoryFragment : Fragment() {
 //class AddStoryFragment : Fragment() ,AddStory.onPopupOkCkick{
 
 
@@ -44,21 +46,6 @@ var navController = NavController
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-
-//        val backbtn = view.findViewById<ImageView>(R.id.backbtnstoryDetails)
-//        backbtn.setOnClickListener {
-//            finish()
-
-
-
-//        }
-//        try {
-//            AddStory(this)
-//
-//        }
-//        catch (e:Exception){
-//            Log.e("trycatch", "onViewCreated: ${e.message} ", )
-//        }
 
         val card1 = view.findViewById<CardView>(R.id.addStoryCard1)
         val card2 = view.findViewById<CardView>(R.id.addStoryCard2)
@@ -81,6 +68,7 @@ var navController = NavController
 
 //        AddStory(this)
 
+
     }
 
     @SuppressLint("ResourceType")
@@ -91,25 +79,13 @@ var navController = NavController
             startActivity(intent)
 
         }
+
     }
     private fun onClick1(view:View ) {
 
         view.setOnClickListener {
-//            val fragment = AddStoryFragment()
-//            childFragmentManager.beginTransaction()?.replace(R.id.favFragment,fragment)?.addToBackStack(null)?.commit()
-//            supportFragmentManager.beginTransaction()
-//                .replace(R.id.fragment_container, fragment)
-//                .addToBackStack(null)
-//                .commit()
-
-
-            val fragment = AddStoryFragment()
-
-//            supportFragmentManager.beginTransaction()
-//                .replace(R.id.fragment_container, fragment)
-//                .addToBackStack(null)
-//                .commit()
-            Log.e("abc", "onClick1: nothing", )
+            val intent = Intent(requireContext(),SelectOneActivity::class.java)
+            startActivity(intent)
 
         }
 
@@ -117,19 +93,9 @@ var navController = NavController
 
 
 
-//    override fun desiTask(view: View) {
-//        Log.e("satta", "desiTask: satta is the best ", )
-//    }
+    fun onButtonClicked(view:View) {
+        val navController = Navigation.findNavController(view)
+        navController.navigate(R.id.expFragment)
 
-    fun greatTask(){
-//        findNavController().navigate(R.id.action_favFragment_to_expFragment)
-
-//            findNavController().navigate(R.id.action_favFragment_to_expFragment)
-
-    }
-      fun nav() {
-//          NavHostFragment.findNavController(this).navigate(R.id.action_favFragment_to_expFragment)   //due to fragment manager
-          parentFragmentManager.findFragmentById(R.id.container)?.findNavController()
-              ?.navigate(R.id.action_favFragment_to_expFragment)
     }
 }

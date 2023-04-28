@@ -5,37 +5,42 @@ import android.app.Activity
 import android.content.Intent
 import android.net.Uri
 import android.os.Build
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.Gravity
 import android.view.View
+import android.widget.EditText
 import android.widget.ImageView
 import android.widget.PopupWindow
 import android.widget.Toast
 import androidx.activity.result.ActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.annotation.RequiresApi
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ReportFragment.Companion.reportFragment
 import androidx.navigation.*
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.fragment.findNavController
-import androidx.navigation.ui.NavigationUI
-
 import androidx.recyclerview.widget.RecyclerView
 import com.example.dataClass.addStoryItem
 import com.example.fragments.AddStoryFragment
+import com.example.fragments.StoryFragment
 import com.example.fragments.addStory.AddStoryActivityStoryItem
+import com.example.task_by_sir.databinding.AddstoryBinding
 import com.github.dhaval2404.imagepicker.ImagePicker
 import com.google.android.material.button.MaterialButton
 import com.squareup.picasso.Picasso
-import java.util.TimerTask
+import kotlin.math.log
 
-class AddStory : AppCompatActivity() {
+class AddStory  : AppCompatActivity() {
+    private lateinit var binding: AddstoryBinding
+    lateinit var titleEdit: EditText
+    lateinit var descEdit: EditText
+    lateinit var keywordEdit: EditText
+
+
 //class AddStory: AppCompatActivity() {
 //class AddStory(var onOk:onPopupOkCkick) : AppCompatActivity(){
-
 
 
     private lateinit var list: MutableList<addStoryItem>
@@ -43,16 +48,19 @@ class AddStory : AppCompatActivity() {
     lateinit var adapter: AddStoryActivityStoryItem
 
 
-
-
     @RequiresApi(Build.VERSION_CODES.P)
     @SuppressLint("MissingInflatedId", "NotifyDataSetChanged")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.addstory)
+        binding = AddstoryBinding.inflate(layoutInflater)
+            setContentView(binding.root)
+
 
         list = mutableListOf<addStoryItem>()
         adapter = AddStoryActivityStoryItem(list)
+        titleEdit = binding.tittleEditText
+        descEdit = binding.tittleEditText
+        keywordEdit = binding.keywordEditText
 
 
 
@@ -70,48 +78,22 @@ class AddStory : AppCompatActivity() {
         btn.setOnClickListener {
 
 
-
             var window = PopupWindow(this)
             var view = layoutInflater.inflate(R.layout.main_pop_up, null)
             window.contentView = view
             var popbtn = view.findViewById<MaterialButton>(R.id.popbtn)
             popbtn.setOnClickListener {
                 window.dismiss()
-//                var view:View = findViewById(R.id.container)
+
+                try {
+                    onButtonClicked(it)
 
 
-//                var b = Bundle()
-//
-//                var a = supportFragmentManager.findFragmentById(R.id.favFragment)
-
-
-//                mainActivity.doTask()
-
-//                var nav = AddStoryFragment()
-//                nav.nav()
-//                Navigation.findNavController(view).navigate(this,R.id.expFragment)
-//                Navigation.findNavController(view).navigate(R.id.expFragment)
-//                var navController:NavController ?= findNavController(R.id.container)
-//                navController?.navigateUp()
-//                var fragment : Unit = Navigation.findNavController(navController as View).navigate(R.id.action_favFragment_to_expFragment)
-//                NavHostFragment.findNavController(v1 as Fragment ).navigate(R.id.action_favFragment_to_expFragment)
-
-             try {
-//                 val intent =Intent(this,AddStoryFragment::class.java)
-//                 startActivity(intent)
-
-//                 supportFragmentManager.findFragmentById(R.id.expFragment)?.findNavController()?.navigate(R.id.action_favFragment_to_expFragment)
-//                 AddStoryFragment().greatTask()
-//                 var fragment = AddStoryFragment().navController
-//                 NavHostFragment.findNavController(fragment).navigate(R.id.action_favFragment_to_expFragment)
-
-
-
-
-             }
-             catch (e:java.lang.Exception){
-                 Log.e("satta", "onCreate: ${e.message}", )
-             }
+                } catch (e: java.lang.Exception) {
+                    Log.e("satta", "onCreate: ${e.message}")
+                }
+                tast2(it)
+                SelectOneActivity().tast2()
             }
 
             window.showAtLocation(view, Gravity.CENTER, 0, 0)
@@ -130,6 +112,7 @@ class AddStory : AppCompatActivity() {
 
 
     }
+
 
     private val startForProfileImageResult =
         registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result: ActivityResult ->
@@ -179,6 +162,8 @@ class AddStory : AppCompatActivity() {
         } else {
             Toast.makeText(this, "Task Cancelled", Toast.LENGTH_SHORT).show()
         }
+
+
     }
 
 
@@ -190,19 +175,63 @@ class AddStory : AppCompatActivity() {
 //        val imageUri = Uri.fromFile(imageFile)
         list.add(addStoryItem(imageUri))
         adapter.notifyDataSetChanged()
-        Log.e("check11", "getUriC: $imageUri",)
+        Log.e("check11", "getUriC: $imageUri")
     }
-
-
-
 
 
 // interface intraFace{
 //     fun desiTask(view: View)
 // }
 
+    private fun sendDAta() {
+//        val bundle = Bundle()
+        var title = titleEdit.text.toString()
+        var desc = descEdit.text.toString()
+        var keyword = keywordEdit.text.toString()
+        var array = arrayListOf<String>(title, desc, keyword)
+//        bundle.getString("title",title)
+        StoryFragment.getData.data(array)
+
 
     }
+
+    fun onButtonClicked(view: View) {
+//        val navController = Navigation.findNavController(view)
+//        navController.navigate(R.id.expFragment)
+        view.setOnClickListener {
+//            supportFragmentManager.findFragmentById(R.id.container)?.findNavController()
+//                ?.navigate(R.id.expFragment)
+
+//            supportFragmentManager.findFragmentById(R.id.homeFragment)?.findNavController()?.navigate(R.id.homeFragment)
+
+        }
+
+    }
+
+    @SuppressLint("ResourceType")
+    private fun tast2(view: View) {
+        var TAG = " satta"
+        try {
+
+            supportFragmentManager.findFragmentById(R.id.favFragment)?.findNavController().apply {
+            navigateUpTo(intent)
+        }
+
+
+// Find the button by ID
+
+
+// Set an onClickListener for the button
+//            view.setOnClickListener {
+//                // Navigate to the second fragment
+//                navController.navigate(R.id.expFragment)
+//            }
+
+        } catch (e: java.lang.Exception) {
+            Log.e(TAG, "tast2: ${e.message}")
+        }
+    }
+}
 
 
 

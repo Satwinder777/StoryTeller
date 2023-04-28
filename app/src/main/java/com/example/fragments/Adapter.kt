@@ -8,6 +8,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -56,23 +57,18 @@ class AdapterData(var list: MutableList<ParentItem>, var list2: MutableList<Vide
         holder.apply {
 
             val parentItem = list[position]
-
-//            var list2 = mutableListOf<VideoDataCls>(VideoDataCls(uri0))
-
-
             childrc.layoutManager = LinearLayoutManager(holder.itemView.context,LinearLayoutManager.HORIZONTAL,false)
             var adapter = ChildAdapter(storyDAta,null)
 
             childrc.adapter = adapter
-            adapter?.notifyDataSetChanged()
+            adapter.notifyDataSetChanged()
 
-            //
-
-//            childrc2.layoutManager = StaggeredGridLayoutManager(3, StaggeredGridLayoutManager.HORIZONTAL)
+            //FlexBox
             val layoutManager = FlexboxLayoutManager(itemView.context)
             layoutManager.setFlexDirection(FlexDirection.ROW)
             layoutManager.setJustifyContent(JustifyContent.FLEX_START)
-//            context.findViewById(R.id.recyclerview).layoutManager = layoutManager
+
+
             childrc2.layoutManager = layoutManager
             var adapter1 =ChildAdapter2(parentItem.list)
             childrc2.adapter =adapter1
@@ -91,6 +87,9 @@ class AdapterData(var list: MutableList<ParentItem>, var list2: MutableList<Vide
                 onSharebtnClick.shareClick(position,it)
 
             }
+//            title.text = parentItem.textList?.get(0)
+//            desc.text = parentItem.textList?.get(1)
+//            keyword.text = parentItem.textList?.get(2)
 
             moreImg.visibility = View.GONE
             cardApproved.visibility = View.GONE
@@ -117,6 +116,10 @@ class AdapterData(var list: MutableList<ParentItem>, var list2: MutableList<Vide
         val constraint1 = ItemView.findViewById<ConstraintLayout>(R.id.constraint0)
         val commentSection = ItemView.findViewById<ConstraintLayout>(R.id.commentSection)
         val commentRecyclerView = ItemView.findViewById<RecyclerView>(R.id.commentRecyclerView)
+
+        val title = itemView.findViewById<TextView>(R.id.storyTitle)
+        val desc = itemView.findViewById<TextView>(R.id.descTitle)
+        val keyword = itemView.findViewById<TextView>(R.id.keywordTitle)
 
 
 

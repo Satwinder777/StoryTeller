@@ -19,12 +19,8 @@ class ChildAdapter(var list: MutableList<Any>,var passData1:passData?):RecyclerV
     companion object {
         const val VIEW_TYPE_IMAGE = 0
         const val VIEW_TYPE_VIDEO = 1
-
     }
-
-
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
-        Log.e("test", "getItemViewType:  $list " )
 
       return when (viewType) {
             VIEW_TYPE_IMAGE -> {
@@ -34,50 +30,40 @@ class ChildAdapter(var list: MutableList<Any>,var passData1:passData?):RecyclerV
             VIEW_TYPE_VIDEO -> {
                 val view = LayoutInflater.from(parent.context).inflate(R.layout.video_view_item, parent, false)
                 VideoViewHolder(view)
+
             }
             else -> throw IllegalArgumentException("Invalid view type")
         }
     }
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
+        passData1?.changePosition(position)
+        holder.apply {
+            itemView.setOnClickListener {
+                passData1?.changePosition(position)
+            }
+        }
 
-//        when (holder) {
-//            is InerClass -> {
-////                 Bind the text view data
-//                holder.apply {
-//                    list2[position].image?.let { childImage.setImageResource(it) }
-//
-//                }
-//            }
-//            is VideoViewHolder -> {
-//                holder.apply {
-//                    VideoItem.setVideoURI(list3[position].video)
-//
-//                }
-//            }
-//            else -> {
-//                throw IllegalArgumentException("Invalid Argument")
-//            }
-//        }
+
         val item = list[position]
-        val item1 = list[position]
+
         when (holder) {
              is InerClass -> {
                 val image = item as ChildData
                 (holder).bind(image)
 
-                 passData1?.imageDAta(image,position,holder.itemView)
+                 passData1?.imageDAta(image)
             }
            is VideoViewHolder -> {
-                val video = item as VideoDataCls
-                (holder).bind(video)
-               passData1?.videoDAta(video,position,holder.itemView)
+
+                   val video = item as VideoDataCls
+                   (holder).bind(video)
+                   passData1?.videoDAta(video)
             }
             else ->{
                 throw IllegalArgumentException("Errorr Occur binding")
             }
         }
-
     }
 
     override fun getItemCount(): Int {
@@ -118,8 +104,10 @@ class ChildAdapter(var list: MutableList<Any>,var passData1:passData?):RecyclerV
 
 
 interface passData{
-     fun imageDAta(ChildData: ChildData, position: Int, itemView: View)
-     fun videoDAta(ChildData: VideoDataCls, position: Int, itemView: View)
+     fun imageDAta(ChildData: ChildData)
+     fun videoDAta(ChildData: VideoDataCls)
+     fun changePosition(position: Int)
 }
+
 
 }
