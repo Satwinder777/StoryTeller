@@ -2,12 +2,16 @@ package com.example.task_by_sir
 
 import android.annotation.SuppressLint
 import android.content.Context
+import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
+import android.os.Build
 import android.os.Bundle
 import android.util.Log
 import android.view.Gravity
 import android.view.View
 import android.view.inputmethod.InputMethodManager
 import android.widget.*
+import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContentProviderCompat.requireContext
 import androidx.core.content.ContextCompat
@@ -19,10 +23,14 @@ import com.example.dataClass.CommentItem
 import com.example.dataClass.ParentItem
 import com.example.fragments.CommentAdapter
 import com.example.fragments.StoryFragment
+import com.example.task_by_sir.databinding.ActivityCommentBinding
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.button.MaterialButton
+import java.util.logging.Level
+import java.util.logging.Logger
 
 class CommentActivity  : AppCompatActivity(),CommentAdapter.updateData1 {
+    private lateinit var binding :ActivityCommentBinding
     private val ParentList = mutableListOf<ParentItem>( )
     private lateinit var list:MutableList<CommentItem>
     private lateinit var adapter:CommentAdapter
@@ -34,7 +42,8 @@ var defaultUser = "satwinder_8182"
     @SuppressLint("MissingInflatedId", "NotifyDataSetChanged")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_comment)
+        binding = ActivityCommentBinding.inflate(layoutInflater)
+        setContentView(binding.root)
          dialog = BottomSheetDialog(this)
         dialog.setContentView(R.layout.comment_more_dialog)
          list = mutableListOf<CommentItem>(CommentItem(defaultUser,"Hellow World"),CommentItem(defaultUser,"hello jatin"))
@@ -91,6 +100,7 @@ var defaultUser = "satwinder_8182"
         adapter.notifyDataSetChanged()
     }
 
+    @RequiresApi(Build.VERSION_CODES.O)
     override fun openDialog(view: View) {
         val dialog = BottomSheetDialog(this)
         dialog.setContentView(R.layout.comment_more_dialog)
@@ -129,16 +139,41 @@ var defaultUser = "satwinder_8182"
                 dialog.setContentView(R.layout.report_dialog_item)
                 dialog.show()
 
+                dialog.window?.apply {
+                    setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+                    setDimAmount(0.72f)
+                }
                 var spam = dialog.findViewById<TextView>(R.id.spamtxt)
+
                 var scamfraud = dialog.findViewById<TextView>(R.id.scamfraudtxt)
                 var falseinfo = dialog.findViewById<TextView>(R.id.falseinfotxt)
                 var dontlike = dialog.findViewById<TextView>(R.id.dontliketxt)
 
-                findView(spam)
-                findView(scamfraud)
-                findView(falseinfo)
-                findView(dontlike)
-            }
+                spam!!.requestFocus()
+
+                scamfraud!!.setOnClickListener {
+
+                findView(scamfraud,dialog)
+
+                  }
+                spam.setOnClickListener {
+
+                findView(spam,dialog)
+
+                  }
+                falseinfo!!.setOnClickListener {
+
+                findView(falseinfo,dialog)
+
+                  }
+                dontlike!!.setOnClickListener {
+
+                findView(dontlike,dialog)
+
+                  }
+
+
+              }
 
         }
     }
@@ -147,55 +182,38 @@ var defaultUser = "satwinder_8182"
 
     }
 
+@SuppressLint("MissingInflatedId", "InflateParams")
+fun findView(view: View,bottomSheetDialog: BottomSheetDialog){
+var TAG = "satta"
 
-//    override fun oncardclick(position: Int) {
-//        TODO("Not yet implemented")
-//    }
-//
-//    override fun shareClick(position: Int, view: View) {
-//        TODO("Not yet implemented")
-//    }
-//
-//    @SuppressLint("NotifyDataSetChanged")
-//    override fun addComment(view: View,text: EditText) {
-//
-//        var comment = CommentItem(defaultUser,text.text.toString())
-//        list.add(comment)
-//        adapter.notifyDataSetChanged()
-//    }
-@SuppressLint("MissingInflatedId")
-fun findView(view: View?){
+            view.setBackgroundColor(ContextCompat.getColor(this,R.color.blue1))
+            bottomSheetDialog.dismiss()
+            view.hasFocus()
 
-    view?.setOnClickListener {
-        view?.setBackgroundColor(ContextCompat.getColor(this,R.color.blue1))
-        var pop = view.findViewById<ImageView>(R.id.showpop)
-        pop.setOnClickListener {
-            var window = PopupWindow(this)
-            var view = layoutInflater.inflate(R.layout.report_popup,null)
-            window.contentView = view
-            var popbtn = view.findViewById<MaterialButton>(R.id.popbtn1)
+            var popupWindow = PopupWindow(this)
+                var view1 = layoutInflater.inflate(R.layout.report_popup,null)
+            window.setBackgroundDrawable(ContextCompat.getDrawable(this, R.drawable.custom_popup_bg))
+
+
+    popupWindow.setOnDismissListener {
+        val layoutParams = window?.attributes
+        layoutParams?.alpha = 1f
+        window?.attributes = layoutParams
+    }
+
+    val layoutParams = window?.attributes
+    layoutParams?.alpha = 0.3f
+    window?.attributes = layoutParams
+
+    popupWindow.contentView = view1
+                var popbtn = view1.findViewById<MaterialButton>(R.id.popbtn1)
+
+    popupWindow.showAtLocation(view, Gravity.CENTER, 0, 0)
             popbtn.setOnClickListener {
-                window.dismiss()
-
-
-
+                popupWindow.dismiss()
             }
-
 //            window.showAsDropDown(pop)
-            window.showAtLocation(view, Gravity.CENTER, 0, 0)
-
         }
-    }
-    view?.setBackgroundColor(ContextCompat.getColor(this,R.color.white))
 
 
-
-
-
-//    view.setBackgroundColor(ContextCompat.getColor(this,R.color.white))
-//        view.setOnClickListener {
-//
-//        }
-
-    }
 }

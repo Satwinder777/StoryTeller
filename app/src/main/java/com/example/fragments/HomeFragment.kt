@@ -12,6 +12,7 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.PopupMenu
 import android.widget.PopupWindow
+import androidx.core.content.ContextCompat
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -54,17 +55,13 @@ class HomeFragment : Fragment(),AdapterData.cardClick,AdapterData.onshareClick{
             var window = PopupWindow(requireContext())
             var view = layoutInflater.inflate(R.layout.main_pop_up,null)
             window.contentView = view
+            window.setBackgroundDrawable(context?.let { it1 -> ContextCompat.getDrawable(it1, R.drawable.custom_popup_bg) })
             var popimg = view.findViewById<ImageView>(R.id.popimg)
             popimg.setOnClickListener {
                 window.dismiss()
-
-
-
             }
-
 //            window.showAsDropDown(pop)
             window.showAtLocation(view, Gravity.CENTER, 0, 0)
-
         }
 
         val recycler = binding.recycler

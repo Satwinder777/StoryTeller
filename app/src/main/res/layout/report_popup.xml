@@ -6,20 +6,22 @@
     android:layout_height="match_parent">
 
     <androidx.cardview.widget.CardView
-        android:layout_width="wrap_content"
+        android:layout_width="250dp"
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:cardCornerRadius="10dp"
+        app:cardCornerRadius="30dp"
+        app:cardBackgroundColor="#f8f8f8"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.5"
         tools:ignore="MissingConstraints">
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:orientation="vertical"
+            android:layout_gravity="center"
             android:layout_margin="10dp"
             >
             <ImageView
@@ -42,8 +44,8 @@
                 android:layout_height="wrap_content"
                 android:textAlignment="center"
                 android:fontFamily="@font/pt_serif_regular"
-                android:layout_marginHorizontal="35dp"
-                android:text="Thanks for letting us know,we try \nto less show you this type of \ncontent in future."/>
+                android:layout_gravity="center"
+                android:text="Thanks for letting us know,we \ntry to less show you this type\n of content in future."/>
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/popbtn1"
                 android:layout_width="wrap_content"
